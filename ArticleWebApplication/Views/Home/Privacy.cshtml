@@ -1,0 +1,167 @@
+﻿@model Article
+
+<!DOCTYPE html>
+<!-- saved from url=(0170)file:///C:/Users/rw1kaytasa/Desktop/vuexy-admin-v8.0.0/html-version/Bootstrap5/vuexy-html-bootstrap5-admin-template/html/ltr/horizontal-menu-template-dark/card-basic.html -->
+<html class="dark-layout loaded" lang="en" data-layout="dark-layout" data-textdirection="ltr" style="--vh: 9.32px;">
+<!-- BEGIN: Head-->
+<head>
+
+
+</head>
+<!-- END: Head-->
+<!-- BEGIN: Body-->
+
+<body class="pace-done horizontal-layout horizontal-menu navbar-floating footer-static menu-expanded" data-open="hover" data-menu="horizontal-menu" data-col="">
+    <div class="pace pace-inactive">
+        <div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
+            <div class="pace-progress-inner"></div>
+        </div>
+        <div class="pace-activity"></div>
+    </div>
+
+    <!-- BEGIN: Header-->
+   
+
+
+    <!-- END: Main Menu-->
+    <!-- BEGIN: Content-->
+    <div class="app-content content ">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper container-xl p-0">
+            <div class="content-body">
+                <!-- Examples -->
+                <section id="card-demo-example">
+                    <div class="row match-height">
+
+                        <div class="col-md-8 col-lg-8">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h3 class="card-title"> <a href="@Model.downloadLink"> @Model.publishName</a></h3>
+                                    
+                                    <div> <h6 class="card-subtitle text-muted">@Model.publishType</h6></div>
+                                </div>
+                                <div class="card-body">
+                              @Model.summary
+                                </div>
+                                <div class="divider divider-primary">
+                                    <div class="divider-text">Aciklamalar</div>
+                                </div>
+                               
+                                <div class="col-md-6 col-xl-8">
+                                    <div class="card shadow-none bg-transparent">
+                                        <div class="card">
+                                            <div class="card-body">
+
+                                                <div>
+                                                    <b style="font-size:15px">Doi numarasi:</b>  @Model.doiNumber
+                                                </div>
+                                                <div>
+                                                    &nbsp
+                                                </div>
+                                                <div>
+                                                    <b style="font-size:15px">Yayin Tarihi:</b>  @Model.publishDate
+                                                </div>
+                                                <div>
+                                                    &nbsp
+                                                </div>
+                                                <div>
+                                                    <b style="font-size:15px">Anahtar Kelimeler:</b>  @Model.keywordsArticle.Substring(17);
+                                                </div>
+                                                <div>
+                                                    &nbsp
+                                                </div>
+                                                <div>
+                                                    <b style="font-size:15px">Ithaf Sayisi:</b>  @Model.numberOfCitations
+                                                </div>
+                                                <div>
+                                                    &nbsp
+                                                </div>
+                                                <div>
+                                                    <b style="font-size:15px">   References: </b>
+                                                </div>
+                                                <div>
+                                                    &nbsp
+                                                </div>
+                                                <div>
+                                                    @foreach (var item in Model.references)
+                                                    {
+                                                        <div style="font-size: 10px"> @item </div>
+                                                    }
+                                                </div>
+                                                <div>
+                                                    &nbsp
+                                                </div>
+                                                <div>
+                                                    <b style="font-size:15px">Kaynak:</b><a href="@Model.urlAddress" style="font-size: 11px"> @Model.urlAddress</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                              
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-3 col-5">
+                            <div class="card card-profile">
+                                <img src="~/app-assets//images/portrait/small/aaa.png" class="img-fluid card-img-top" alt="Profile Cover Photo">
+                                <div class="card-body">
+                                    <div class="profile-image-wrapper">
+                                        <div class="profile-image">
+
+                                            <div data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="center" title="Billy Hopkins" class="avatar pull-up">
+                                                <img src="../../../app-assets/images/portrait/small/Bootstrap-person-icon.png" alt="Avatar" width="20" height="20" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h3>@Model.authorsName</h3>
+                                    <div>
+                                        &nbsp
+                                    </div>
+                                    <div>
+                                        @Model.publishArea
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+
+            </div>
+        </div>
+
+
+
+        <!-- END: Content-->
+
+        <div class="sidenav-overlay" style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></div>
+        <div class="drag-target" style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></div>
+        <footer>
+            <div>
+                &nbsp
+            </div>
+            <div class="divider divider-primary">
+                <div class="divider-text" style="opacity: 80%">Developed by SAFIYE KAYTAN</div>
+            </div>
+            <div>
+                &nbsp
+            </div>
+        </footer>
+        <script>
+            $(window).on('load', function () {
+                if (feather) {
+                    feather.replace({
+                        width: 14,
+                        height: 14
+                    });
+                }
+            })
+        </script>
+
+
+</body><!-- END: Body-->
+</html>

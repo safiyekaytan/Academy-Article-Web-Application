@@ -1,0 +1,275 @@
+﻿
+@model List<Article>
+
+
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+
+
+   
+
+  
+</head>
+
+
+<body class="pace-done horizontal-layout horizontal-menu navbar-floating footer-static menu-expanded" data-open="hover" data-menu="horizontal-menu" data-col="">
+
+   
+
+
+    <!-- BEGIN: Content-->
+    <div class="app-content content ">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper container-xxl p-0">
+
+            <div class="content-body">
+                <!-- Knowledge base Jumbotron -->
+                <section id="knowledge-base-search">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card knowledge-base-bg text-center" style="background-image: url('../../../app-assets/images/banner/pngegg (2).png')">
+                                <div class="card-body">
+
+
+                                    <h2 class="text-primary">ACADEMIC ARTICLE SITE</h2>
+                                    <p class="card-text mb-2">
+                                        <span>Popular searches: </span><span class="fw-bolder">Deep learning, the theory of relativity, ducks</span>
+                                    </p>
+                                    
+
+                                    <form class="kb-search-input" asp-action="Index">
+                                            <div class="input-group input-group-merge">
+                                                <span class="input-group-text"><i data-feather="search"></i></span>
+                                            <input type="text" asp-for="@Model[0].keywordsSearched" class="form-control" id="searchbar" placeholder="Ask a question..." />
+                                            </div>
+                                             <div>
+										&nbsp
+                                        </div>
+                                        <input type="submit" class="btn btn-primary" onclick="handleButtonClick()">
+
+                                    </form>
+                                    @if (ViewBag.oner != null)
+                                            {
+                                    <form class="kb-search-input" asp-action="Index">
+                                        <div class="input-group input-group-merge">
+                                          
+                                                <input type="hidden" asp-for="@Model[0].keywordsSearched" value="@ViewBag.oner" class="form-control" id="searchbar" placeholder="Ask a question..." />
+
+                                            
+                                        </div>
+                                        <div>
+                                            &nbsp
+                                        </div>
+                                            <input type="submit" class="btn btn-primary" value="@ViewBag.oner mi demek istediniz?" onclick="handleButtonClick()">
+
+                                    </form>
+                                    }
+                                    <div>
+										&nbsp
+                                        </div>
+                                   
+                                   
+                                
+                                    <div>
+                                        &nbsp
+                                    </div>
+
+                                <div id="spinner" style="display:none;">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                </section>
+                <!--/ Knowledge base Jumbotron -->
+
+                <!-- Knowledge base -->
+               
+                <!-- Knowledge base ends -->
+
+            </div>
+
+
+            <div class="content-body">
+                <!-- Basic Tables start -->
+                <div class="row" id="basic-table">
+                    <div class="col-12">
+                        <div class="card">
+                           
+                            <div class="table-responsive">
+                                <div class="card-body">
+                                    <div style="text-align: right">
+
+                                        <i><b> <a id="your-anchor-id"> </a></b></i> <span id="your-anchor-idYan"></span>
+                                    </div>
+                                    <table id="example" class="table table-bordered" style="width:70%">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <a>
+                                                    YAYIN ADI
+                                                    </th>
+                                                    </a>
+                                                <th>YAZAR</th>
+                                                <th>TUR</th>
+                                                <th>YAYINLANMA YERI</th>
+                                                <th>ALINTI SAYISI</th>
+                                                <th>YAYINLANMA TARIHI</th>
+                                                <th>INDIR</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach(var item in Model)
+                                            {
+                                               
+                                                    string[] parcala = item.publishDate.ToString().Split(" ");
+                                                    string tarih = parcala[0];
+                                                
+                                                <tr>
+
+                                                    <td>
+                                                        <a asp-action="Privacy" asp-route-id="@item.Id"> @item.publishName</a>
+                                                       
+                                                    </td>
+                                                    <td>@item.authorsName</td>
+                                                    <td>@item.publishType</td>
+                                                    <td>@item.publishArea</td>
+                                                    <td>@item.numberOfCitations</td>
+                                                    <td>@tarih</td>
+
+                                                    <form action="@Url.Action("Download", "Home")" method="post">
+                                                        <input type="hidden" value="@item.downloadLink" name="link" />
+                                                    <td><button type="submit" class="btn btn-primary" value="Indir" />Download</td>
+                                                    </form>
+
+                                                   
+                                                </tr>
+                                            }
+
+                                           
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>
+                                                        YAYIN ADI
+                                                </th>
+                                                <th>YAZAR</th>
+                                                <th>TUR</th>
+                                                <th>YAYINLANMA YERI</th>
+                                                <th>ALINTI SAYISI</th>
+                                                <th>YAYINLANMA TARIHI</th>
+                                                <th style="visibility: hidden">
+                                                    
+                                                </th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+    
+    
+    <!-- END: Content-->
+  <a asp-action="Privacy">privacyy</a>
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+
+
+    <button class="btn btn-primary btn-icon scroll-top" type="button"><i data-feather="arrow-up"></i></button>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/2.0.1/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.0.1/js/dataTables.bootstrap5.js"></script>
+  
+    <script>
+
+        var intervalID; // İnterval kimliğini saklamak için değişken
+
+        function startSearchInterval() {
+            intervalID = setInterval(function () {
+                // Tablodaki satır sayısını kontrol et
+                var rowCount = $('#example tbody tr').length;
+                var dtEmptyElement = document.querySelector('td.dt-empty');
+
+                // Eğer bir işlem zaten devam ediyorsa, bu adımı atla
+                if (!dtEmptyElement) {
+                    return;
+                }
+
+                var content = dtEmptyElement.textContent.trim();
+                if (rowCount === 1 && content.length > 0) {
+                    // Arama kutusundan değeri al
+                    var searchString = document.getElementById('dt-search-0').value;
+
+                    // AJAX kullanarak C# backend'e gönder
+                    $.ajax({
+                        type: "POST",
+                        url: "/Home/getHeader",
+                        data: { searchString: searchString },
+                        success: function (data) {
+                            if (data !== null && data !== undefined) {
+                                // Veri null veya tanımsız değilse işlemleri gerçekleştir
+                                $("#your-anchor-id").text(data);
+                                $("#your-anchor-idYan").text("mi demek istemiştiniz?"); // Controller'den dönen veriyi a tagı içine yazdır
+                            } else {
+                                // Veri null veya tanımsız ise yapılacak işlemler
+                                console.log("Veri null veya tanımsız.");
+                            }
+                        },
+                        error: function (xhr, status, error) {
+                            // Hata durumunda işlem yap
+                            alert("hata");
+                        }
+                    });
+                }
+                else {
+                    // Örneğin, veriyi tabloya yükle veya arama kutusuna yerleştir
+                    
+                }
+            }, 5000); // Her 5 saniyede bir kontrol et
+        }
+
+        // Sayfa yüklendikten sonra işlemi başlat
+        $(document).ready(function () {
+            startSearchInterval();
+        });
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            // "your-anchor-id" adlı <a> etiketini seç
+            $('#your-anchor-id').click(function (event) {
+                event.preventDefault();
+                // <a> etiketinin metnini al
+                var clickedText = $(this).text();
+
+                // "search-dt" ID'li <input> içine metni yaz
+                $('#dt-search-0').val(clickedText);
+               
+            });
+        });
+    </script>
+
+
+    <!-- END: Footer-->
+</body>
+<!-- END: Body-->
+
+</html>
